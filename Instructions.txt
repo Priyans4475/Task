@@ -1,0 +1,58 @@
+
+ ##     Prerequisites:
+Node.js and npm installed on your system. You can download and install them from here.
+
+MySQL database server installed and running on your system. You can download and install MySQL from here.
+
+Environment variables configured:
+
+MYSQL_HOST: Hostname of your MySQL database server.
+MYSQL_USER: Username for accessing the MySQL database.
+MYSQL_PASSWORD: Password for accessing the MySQL database.
+MYSQL_DATABASE: Name of the MySQL database to use.
+JWT_SECRET: Secret key for signing JWT tokens.
+
+Steps to set up and run the application:
+
+Clone the repository or download the project files to your local machine.
+
+Navigate to the project directory using the terminal or command prompt.
+
+## Install dependencies:
+
+npm install
+Create the necessary MySQL database tables:
+
+Use the provided SQL schema to create the users table.
+
+Set up environment variables:
+
+Create a .env file in the project root directory.
+Add the required environment variables to the .env file, such as:
+makefile
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=password
+MYSQL_DATABASE=your_database_name
+JWT_SECRET=your_jwt_secret
+Start the Node.js application:
+
+## npm start
+Once the server is running, you can access the API endpoints using tools like Postman or through your web browser.
+
+Additional Notes:
+
+
+Ensure that your MySQL database server is running and accessible before starting the application.
+Make sure that the environment variables are correctly set up with the appropriate values.
+
+Check the console output for any errors or warnings when starting the application.
+
+Monitor the server logs for any runtime errors or issues.
+
+By following these steps, you should be able to set up and run your Node.js application successfully. 
+Adjust the instructions as needed based on your specific application setup and requirements.
+
+
+
+
