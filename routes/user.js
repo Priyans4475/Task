@@ -95,6 +95,22 @@ router.post('/signin', (req, res) => {
     });
 });
 
+router.get('/users', (req, res) => {
+    // MySQL query to fetch users
+    const getUsersQuery = 'SELECT * FROM users';
+
+    // Execute the query
+    con.query(getUsersQuery, (err, results) => {
+        if (err) {
+            console.error('Error retrieving users:', err);
+            return res.status(500).send('Error retrieving users');
+        }
+
+        // If users are found, return them as a JSON response
+        res.json(results);
+    });
+});
+
 
 module.exports=router;
 
