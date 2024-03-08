@@ -1,8 +1,12 @@
 const express=require('express');
 const router=express.Router();
-const con=require('../config')
+const con=require('../config');
+const { authmiddleware } = require('../middleware');
 
-router.post('/', (req, res) => {
+
+// POST /transactions: Add a new transaction (income or expense).
+
+router.post('/',authmiddleware,(req, res) => {
     const data = req.body;
     con.query('INSERT INTO transactions SET ?', data, (error, result, fields) => {
         if (error) {
@@ -15,7 +19,9 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/', (req, res) => {
+// GET /transactions: Retrieve a list of transactions for a given period.
+
+router.get('/', authmiddleware,(req, res) => {
     // Retrieve start and end date query parameters from the request
     const startDate = req.query.startDate;
     const endDate = req.query.endDate;
@@ -38,7 +44,12 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/summary', (req, res) => {
+
+// Get API for fetching summary of transaction
+// GET /transactions/summary: Retrieve a summary of transactions 
+// (total income, total expenses, and savings) for a given period.
+
+router.get('/summary', authmiddleware,(req, res) => {
     // Retrieve start and end date query parameters from the request
     const startDate = req.query.startDate;
     const endDate = req.query.endDate;
@@ -82,7 +93,10 @@ router.get('/summary', (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {
+// Delete Transaction
+// DELETE /transactions/:id: Delete a specific transaction.
+
+router.delete('/:id', authmiddleware,(req, res) => {
     const transactionId = req.params.id;
 
     con.query('DELETE FROM transactions WHERE transaction_id = ?', transactionId, (error, result) => {
